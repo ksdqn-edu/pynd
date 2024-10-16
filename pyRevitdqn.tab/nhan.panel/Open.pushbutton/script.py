@@ -12,18 +12,18 @@ wb=gs.open_by_key("1MwhMkt7WKHHpjBPt6dTfsEJbATAQb6knagkceKYYVkU")
 
 shts = wb.worksheets()
 sht=wb.sheet1 
-column_index1 = 1  # Ví dụ: đọc từ cột A, nếu là cột B thì đặt là 2, v.v.
-# Đọc dữ liệu từ cột
+column_index1 = 1  
+
 column_data1 = sht.col_values(column_index1)
-# Lấy giá trị cuối cùng của cột
-last_value1 = column_data1[2]
+
+last_value1 = column_data1[-1]
 dong_cuoi1=int(len(column_data1))
 sht.update_acell(f'b{dong_cuoi1+1}', "456")
 from pyrevit import script,forms
 from pyrevit import script
 from pyrevit.forms import WPFWindow
 import os
-# import sqlite3
+
 
 import clr
 clr.AddReferenceByName('Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c')
@@ -48,7 +48,7 @@ try:
 	res_sheet = res_workbook.Sheets("Sheet1")
 except Exception:
     pass
-
+print(dong_cuoi1)
 
 # selectedCells = res_sheet.Selection
 # dc=selectedCells.address
