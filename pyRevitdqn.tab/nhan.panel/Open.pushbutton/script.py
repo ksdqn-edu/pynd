@@ -3,6 +3,22 @@
 # sys.path.append(r'C:\Users\<QUOC NHAN>\AppData\Roaming\pyRevit-Master\pyrevitlib')
 # sys.path.append(r'C:\Users\<QUOC NHAN>\AppData\Roaming\pyRevit-Master\site-packages')
 #import xlwings as xw
+
+
+import os
+import gspread
+gs=gspread.service_account("D:\\driveapi\\demoapi-426214-1c72774ca6f5.json")
+wb=gs.open_by_key("1MwhMkt7WKHHpjBPt6dTfsEJbATAQb6knagkceKYYVkU")
+
+shts = wb.worksheets()
+sht=wb.sheet1 
+column_index1 = 1  # Ví dụ: đọc từ cột A, nếu là cột B thì đặt là 2, v.v.
+# Đọc dữ liệu từ cột
+column_data1 = sht.col_values(column_index1)
+# Lấy giá trị cuối cùng của cột
+last_value1 = column_data1[2]
+dong_cuoi1=int(len(column_data1))
+sht.update_acell(f'b{dong_cuoi1+1}', "456")
 from pyrevit import script,forms
 from pyrevit import script
 from pyrevit.forms import WPFWindow
